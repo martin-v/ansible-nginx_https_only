@@ -1,2 +1,38 @@
 ---
-# tasks file for letsencryptsh
+
+
+- name: Install nginx package
+  package: name=nginx state=present
+
+
+- name: Ensure nginx dhparams_path folder
+  file: state=directory path={{ dhparams_path | dirname }}
+
+- name: Create secure Ephemeral Diffie-Hellman parameter
+  shell: openssl dhparam -out {{ dhparams_path }} {{ dhparams_size }}
+  args:
+    creates: "{{ dhparams_path }}"
+
+
+- name: Remove default nginx config
+  file:
+    state: absent
+    path: /etc/nginx/sites-enabled/default
+  notify: Restart nginx
+
+- name: Deploy nginx http config
+  template:
+    src: templates/http.conf.j2
+    dest: /etc/nginx/sites-available/http.conf
+  notify: Restart nginx
+
+- name: Enable nginx http config
+  file:
+    src: /etc/nginx/sites-available/http.conf
+    dest: /etc/nginx/sites-enabled/http.conf
+    state: link
+  notify: Restart nginx
+
+
+- name: Ensure nginx is started and runs on startup.
+  service: name=nginx state=started enabled=yes

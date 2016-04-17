@@ -1,0 +1,22 @@
+---
+
+lcsh_contactemail: certmaster@example.com
+
+lcsh_domains: |
+  example.com
+  example.org www.example.org blog.example.org
+
+
+lcsh_deploy_cert: |
+  mkdir -p /etc/nginx/ssl/${DOMAIN}
+  cp "${KEYFILE}" "${CERTFILE}" "${FULLCHAINFILE}" "${CHAINFILE}" /etc/nginx/ssl/${DOMAIN}
+  chown root:www-data /etc/nginx/ssl/${DOMAIN}/*
+  chmod 600 /etc/nginx/ssl/${DOMAIN}/*
+  hash systemctl 2>/dev/null && systemctl restart nginx.service
+
+
+# use letsencrypt test api
+lcsh_acme_api: https://acme-staging.api.letsencrypt.org/directory
+# use test version with workaround for unreachable private test vms
+lcsh_repourl: https://github.com/martin-v/letsencrypt.sh.git
+lcsh_commit: selfsigned_for_test_in_vms

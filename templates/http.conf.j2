@@ -1,0 +1,18 @@
+
+server {
+  listen 80 default_server;
+  listen [::]:80 default_server ipv6only=on;
+  server_name {{ nginx_https_server_name }};
+
+  add_header Strict-Transport-Security max-age={{ nginx_https_strict_transport }};
+
+  location /.well-known/acme-challenge/ {
+      default_type "text/plain";
+      alias /var/www/letsencrypt.sh/;
+      try_files $uri =404;
+  }
+
+  location / {
+    rewrite ^/(.*) https://{{ nginx_https_server_name }}/$1 permanent;
+  }
+}

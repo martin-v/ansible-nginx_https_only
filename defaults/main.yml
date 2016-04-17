@@ -1,2 +1,10 @@
----
-# defaults file for letsencryptsh
+
+
+nginx_https_server_name : httptest.martinvietz.de
+
+
+nginx_https_strict_transport : 6000 # 7884000 # three month
+
+
+dhparams_path: /etc/nginx/ssl/dhparam.pem
+dhparams_size: 1024 # TODO small size for tests
