@@ -6,12 +6,13 @@
 
 
 - name: Ensure nginx dhparams_path folder
-  file: state=directory path={{ dhparams_path | dirname }}
+  file: state=directory path={{ nginx_https_dhparam_path | dirname }}
 
 - name: Create secure Ephemeral Diffie-Hellman parameter
-  shell: openssl dhparam -out {{ dhparams_path }} {{ dhparams_size }}
+  shell: openssl dhparam -out {{ nginx_https_dhparam_path }} {{ nginx_https_dhparam_size }}
   args:
-    creates: "{{ dhparams_path }}"
+    creates: "{{ nginx_https_dhparam_path }}"
+
 
 
 - name: Remove default nginx config

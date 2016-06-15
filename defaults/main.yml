@@ -5,6 +5,6 @@ nginx_https_server_name : httptest.martinvietz.de
 
 nginx_https_strict_transport : 6000 # 7884000 # three month
 
+nginx_https_dhparam_path: /etc/nginx/ssl/dhparam.pem
+nginx_https_dhparam_size: 4096
 
-dhparams_path: /etc/nginx/ssl/dhparam.pem
-dhparams_size: 1024 # TODO small size for tests
