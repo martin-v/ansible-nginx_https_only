@@ -6,7 +6,7 @@ ssl_ciphers '{{ nginx_https_ssl_ciphers }}';
 ssl_dhparam {{ nginx_https_dhparam_path }};
 
 
-ssl_session_cache shared:SSL:{{ nginx_https_session_cache_size }};
+ssl_session_cache shared:SSL:{{ nginx_https_tls_session_cache_size }};
 ssl_session_timeout {{ nginx_https_session_timeout }};
 
 
