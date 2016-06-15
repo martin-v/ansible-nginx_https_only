@@ -14,6 +14,18 @@
     creates: "{{ nginx_https_dhparam_path }}"
 
 
+- name: Remove potential dupplicate ssl_prefer_server_ciphers
+  lineinfile:
+    dest: /etc/nginx/nginx.conf
+    regexp: '.*ssl_prefer_server_ciphers.*'
+    state: absent
+
+- name: Deploy tls config for nginx
+  template:
+    src: templates/tls.conf.j2
+    dest: /etc/nginx/conf.d/tls.conf
+  notify: Restart nginx
+
 
 - name: Remove default nginx config
   file:

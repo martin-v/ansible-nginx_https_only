@@ -1,10 +1,18 @@
 
 
+# TODO name
 nginx_https_server_name : httptest.martinvietz.de
 
 
-nginx_https_strict_transport : 6000 # 7884000 # three month
+nginx_https_ssl_protocols: TLSv1.2
+nginx_https_ssl_ciphers: "EDH+CAMELLIA:EDH+aRSA:EECDH+aRSA+AESGCM:EECDH+aRSA+SHA256:EECDH:!CAMELLIA128:!AES128:+SSLv3:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!DSS:!RC4:!SEED:!IDEA:!ECDSA"
 
 nginx_https_dhparam_path: /etc/nginx/ssl/dhparam.pem
 nginx_https_dhparam_size: 4096
 
+nginx_https_session_cache_size: 10m
+nginx_https_session_timeout: 30m
+
+
+
+nginx_https_strict_transport : max-age=6000 # 7884000 # three month

@@ -1,0 +1,13 @@
+
+
+ssl_prefer_server_ciphers on;
+ssl_protocols {{ nginx_https_ssl_protocols }};
+ssl_ciphers '{{ nginx_https_ssl_ciphers }}';
+ssl_dhparam {{ nginx_https_dhparam_path }};
+
+
+ssl_session_cache shared:SSL:{{ nginx_https_session_cache_size }};
+ssl_session_timeout {{ nginx_https_session_timeout }};
+
+
+add_header Strict-Transport-Security {{ nginx_https_strict_transport }};

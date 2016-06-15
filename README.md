@@ -66,7 +66,6 @@ TODO
 Open tasks
 ----------
 
-* Add global strong crypto settings
 * Add more http security header
 * Write documentation in README.md
 * Example documentation for usage
