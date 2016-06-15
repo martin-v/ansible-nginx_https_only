@@ -1,35 +1,77 @@
-Role Name
-=========
+nginx https only
+================
 
 Install nginx webserver with following configurations:
-* https only
+* http to https redirect
 * strong crypto settings
 * automatic SSL certificates from let's encrypt.
+
+
+**The script [letsencrypt.sh](https://github.com/lukas2511/letsencrypt.sh)
+used by this role. This script is working with your private keys so be careful
+and review the code. For more details take a look at the
+[ansible letsencrypt.sh role](https://github.com/martin-v/ansible-letsencryptsh).**
 
 
 Requirements
 ------------
 
-Any pre-requisites that may not be covered by Ansible itself or the role should be mentioned here. For instance, if the role uses the EC2 module, it may be a good idea to mention in this section that the boto package is required.
+Installs a nginx and some small packages from dependent role (e.g. openssl and git)
+
+This role need for a appropriate usage an additional webserver configuration
+with specification of the served content.
+
+TODO add example
+
 
 Role Variables
 --------------
 
-A description of the settable variables for this role should go here, including any variables that are in defaults/main.yml, vars/main.yml, and any variables that can/should be set via parameters to the role. Any variables that are read from other roles and/or the global scope (ie. hostvars, group vars, etc.) should be mentioned here as well.
+### Required Variables:
+
+TODO write documentation
+
+### Optional Variables:
+
+TODO write documentation
+
+There are also some more advanced variables for super user who need more control,
+for details look at `defaults/main.yml`
+
 
 Dependencies
 ------------
 
-A list of other roles hosted on Galaxy should go here, plus any details in regards to parameters that may need to be set for other roles, or variables that are used from other roles.
+This role depends on [martin-v.letsencryptsh](https://github.com/martin-v/ansible-letsencryptsh).
+
 
 Example Playbook
 ----------------
 
-Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
-
     - hosts: servers
       roles:
-         - { role: username.rolename, x: 42 }
+        - { role: martin-v.letsencryptsh }
+        - { role: martin-v.nginx_https_only }
+      vars_files:
+        - group_vars/letsencryptsh.yml
+        - group_vars/nginx_https_only.yml
+
+
+Example Variables file
+----------------------
+
+TODO
+
+
+Open tasks
+----------
+
+* Add global strong crypto settings
+* Add more http security header
+* Write documentation in README.md
+* Example documentation for usage
+* Extend test to deploy a https sites
+
 
 License
 -------
