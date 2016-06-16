@@ -1,10 +1,11 @@
+# This config is generated with ansible role martin-v.nginxhttpsonly
+# https://github.com/martin-v/ansible-nginxhttpsonly
 
 server {
   listen 80 default_server;
   listen [::]:80 default_server ipv6only=on;
-  server_name {{ nginx_https_server_name | mandatory }};
 
-  add_header Strict-Transport-Security max-age={{ nginx_https_strict_transport }};
+  server_name {{ nginx_https_server_name | mandatory }};
 
   location /.well-known/acme-challenge/ {
       default_type "text/plain";
