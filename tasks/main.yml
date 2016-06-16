@@ -19,6 +19,11 @@
     dest: /etc/nginx/nginx.conf
     regexp: '.*ssl_prefer_server_ciphers.*'
     state: absent
+- name: Remove potential dupplicate ssl_protocols
+  lineinfile:
+    dest: /etc/nginx/nginx.conf
+    regexp: '.*ssl_protocols.*'
+    state: absent
 
 - name: Deploy tls config for nginx
   template:
