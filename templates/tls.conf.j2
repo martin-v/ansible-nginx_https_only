@@ -9,5 +9,8 @@ ssl_dhparam {{ nginx_https_dhparam_path }};
 ssl_session_cache shared:SSL:{{ nginx_https_tls_session_cache_size }};
 ssl_session_timeout {{ nginx_https_session_timeout }};
 
+ssl_stapling on;
+ssl_stapling_verify on;
+
 
 add_header Strict-Transport-Security {{ nginx_https_strict_transport }};
