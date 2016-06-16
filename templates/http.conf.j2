@@ -13,6 +13,6 @@ server {
   }
 
   location / {
-    rewrite ^/(.*) https://{{ nginx_https_server_name | mandatory }}/$1 permanent;
+    return 301 https://{{ nginx_https_server_name | mandatory }}$request_uri;
   }
 }
