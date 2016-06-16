@@ -6,9 +6,9 @@
 
 
 # See README.md for details.
-nginx_https_ssl_protocols: TLSv1.2
+nginx_https_ssl_protocols: TLSv1 TLSv1.1 TLSv1.2
 # See README.md for details.
-nginx_https_ssl_ciphers: "EDH+CAMELLIA:EDH+aRSA:EECDH+aRSA+AESGCM:EECDH+aRSA+SHA256:EECDH:!CAMELLIA128:!AES128:+SSLv3:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!DSS:!RC4:!SEED:!IDEA:!ECDSA"
+nginx_https_ssl_ciphers: "EDH+CAMELLIA:EDH+aRSA:EECDH+aRSA+AESGCM:EECDH+aRSA+SHA256:EECDH:+CAMELLIA128:+AES128:+SSLv3:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!DSS:!RC4:!SEED:!IDEA:!ECDSA"
 
 
 # Path to generated dhparam file
