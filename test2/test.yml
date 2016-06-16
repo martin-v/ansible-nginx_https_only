@@ -1,0 +1,36 @@
+---
+
+
+- hosts: all
+  remote_user: root
+  roles:
+    - martin-v.nginx_https_only
+    - martin-v.letsencryptsh
+  vars_files:
+    - test_vars.yml
+
+
+- hosts: all
+  remote_user: root
+  vars_files:
+    - test_vars.yml
+  tasks:
+  - name: run weekly cron script to initial create all certificates
+    shell: /etc/cron.weekly/letsencrypt-sh
+    changed_when: false
+
+
+- hosts: all
+  remote_user: root
+  vars_files:
+    - test_vars.yml
+  tasks:
+  - name: Deploy nginx sslsite config
+    template:
+      src: templates/sslsite.conf.j2
+      dest: /etc/nginx/sites-available/sslsite.conf
+  - name: Enable nginx sslsite config
+    file:
+      src: /etc/nginx/sites-available/sslsite.conf
+      dest: /etc/nginx/sites-enabled/sslsite.conf
+      state: link
