@@ -7,10 +7,10 @@ Install nginx webserver with following configurations:
 * automatic SSL certificates from let's encrypt.
 
 
-**The script [letsencrypt.sh](https://github.com/lukas2511/letsencrypt.sh)
+**The script [dehydrated](https://github.com/lukas2511/dehydrated)
 used by this role. This script is working with your private keys so be careful
 and review the code. For more details take a look at the
-[ansible letsencrypt.sh role](https://github.com/martin-v/ansible-letsencryptsh).**
+[ansible dehydrated role](https://github.com/martin-v/ansible-dehydrated).**
 
 
 Requirements
@@ -42,7 +42,7 @@ for details look at `defaults/main.yml`
 Dependencies
 ------------
 
-This role depends on [martin-v.letsencryptsh](https://github.com/martin-v/ansible-letsencryptsh).
+This role depends on [martin-v.dehydrated](https://github.com/martin-v/ansible-dehydrated).
 
 
 Example Playbook

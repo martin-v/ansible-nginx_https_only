@@ -5,7 +5,7 @@
   remote_user: root
   roles:
     - martin-v.nginx_https_only
-    - martin-v.letsencryptsh
+    - martin-v.dehydrated
   vars_files:
     - test_vars.yml
 
@@ -17,6 +17,6 @@
     - test_vars.yml
   tasks:
   - name: run weekly cron script to initial create all certificates
-    shell: /etc/cron.weekly/letsencrypt-sh
+    shell: /etc/cron.weekly/dehydrated
     changed_when: false
 

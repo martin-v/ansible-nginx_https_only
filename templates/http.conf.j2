@@ -9,7 +9,7 @@ server {
 
   location /.well-known/acme-challenge/ {
       default_type "text/plain";
-      alias /var/www/letsencrypt.sh/;
+      alias /var/www/dehydrated/;
       try_files $uri =404;
   }
 
