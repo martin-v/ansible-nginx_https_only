@@ -17,14 +17,5 @@ nginx_https_dhparam_path: /etc/nginx/ssl/dhparam.pem
 nginx_https_dhparam_size: 4096
 
 
-# Config for shared tls cache, from nginx docs:
-#   a cache shared between all worker processes. The cache size is specified
-#   in bytes; one megabyte can store about 4000 sessions
-nginx_https_tls_session_cache_size: 10m
-# a time while a client may reuse the session parameters
-nginx_https_session_timeout: 30m
-
-
-
 # See README.md for details.
 nginx_https_strict_transport : max-age=7884000 # three month

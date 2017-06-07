@@ -6,8 +6,10 @@ ssl_protocols {{ nginx_https_ssl_protocols }};
 ssl_ciphers '{{ nginx_https_ssl_ciphers }}';
 ssl_dhparam {{ nginx_https_dhparam_path }};
 
-ssl_session_cache shared:SSL:{{ nginx_https_tls_session_cache_size }};
-ssl_session_timeout {{ nginx_https_session_timeout }};
+# Disable ssl_session_cache because it breaks PFS
+# https://timtaubert.de/blog/2014/11/the-sad-state-of-server-side-tls-session-resumption-implementations/
+ssl_session_cache off;
+ssl_session_tickets off;
 
 ssl_stapling on;
 ssl_stapling_verify on;

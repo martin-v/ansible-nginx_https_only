@@ -66,6 +66,8 @@ TODO
 Open tasks
 ----------
 
+* Implement safe usage of ssl_session_ticket_key
+** Refresh key every day
 * Add more http security header
 * Write documentation in README.md
 * Example documentation for usage
