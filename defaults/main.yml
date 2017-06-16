@@ -22,3 +22,5 @@ nginx_https_dhparam_path: /etc/nginx/ssl/dhparam.pem
 # Size of dhparam key file, use 2048 if you work with old software
 nginx_https_dhparam_size: 4096
 
+# Disable nginx server version header ( on | off | build | "string" )
+nginx_server_tokens: "off"
