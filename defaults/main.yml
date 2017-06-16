@@ -1,21 +1,24 @@
-
-
+---
 
 # See README.md for details. Commented out to enforce mandatory variable!
 #nginx_https_server_name:
 
-
 # See README.md for details.
 nginx_https_ssl_protocols: TLSv1 TLSv1.1 TLSv1.2
+
 # See README.md for details.
 nginx_https_ssl_ciphers: "EDH+CAMELLIA:EDH+aRSA:EECDH+aRSA+AESGCM:EECDH+aRSA+SHA256:EECDH:+CAMELLIA128:+AES128:+SSLv3:!aNULL:!eNULL:!LOW:!3DES:!MD5:!EXP:!PSK:!DSS:!RC4:!SEED:!IDEA:!ECDSA"
 
 
-# Path to generated dhparam file
-nginx_https_dhparam_path: /etc/nginx/ssl/dhparam.pem
-# See README.md for details.
-nginx_https_dhparam_size: 4096
-
-
 # See README.md for details.
 nginx_https_strict_transport : max-age=7884000 # three month
+
+
+# unusual variables, normaly you don't need change any of them.
+
+
+# Path to generated dhparam file
+nginx_https_dhparam_path: /etc/nginx/ssl/dhparam.pem
+# Size of dhparam key file, use 2048 if you work with old software
+nginx_https_dhparam_size: 4096
+
