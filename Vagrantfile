@@ -6,7 +6,7 @@ ENV['ANSIBLE_ROLES_PATH'] = ".."
 Vagrant.configure(2) do |config|
 	config.vm.box = "debian/jessie64"
 	config.vm.synced_folder ".", "/vagrant", disabled: true
-	config.vm.hostname = "nginxhttpsonly"
+	config.vm.hostname = "nginxhttpsonlytest"
 	config.vm.provision :ansible do |ansible|
 		ansible.playbook = "tests/test.yml"
 		ansible.verbose = "v"

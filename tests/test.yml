@@ -3,19 +3,17 @@
 
 - hosts: all
   remote_user: root
-  roles:
-    - martin-v.nginx_https_only
-    - martin-v.dehydrated
+  tasks:
+  - name: Update repositories cache
+    apt: update_cache=yes
+    changed_when: false
 
 
 - hosts: all
   remote_user: root
-  tasks:
-  - name: run weekly cron script to initial create all certificates
-    shell: /etc/cron.weekly/dehydrated
-    changed_when: false
-    tags:
-    - skip_ansible_lint
+  roles:
+    - martin-v.nginx_https_only
+    - martin-v.dehydrated
 
 
 - hosts: all
@@ -30,3 +28,13 @@
       src: /etc/nginx/sites-available/sslsite.conf
       dest: /etc/nginx/sites-enabled/sslsite.conf
       state: link
+  - name: Restart nginx
+    service: name=nginx state=restarted
+    changed_when: false
+
+  - name: Print webservers ssl certificate
+    shell:
+      cmd: "openssl s_client -showcerts -connect localhost:443 < /dev/null"
+    changed_when: false
+    tags:
+    - skip_ansible_lint

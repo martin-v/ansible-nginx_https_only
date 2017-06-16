@@ -8,21 +8,11 @@ dehydrated_domains: |
   example.com
   example.org www.example.org blog.example.org
 
-
-dehydrated_deploy_cert: |
-  mkdir -p /etc/nginx/ssl/${DOMAIN}
-  cp "${KEYFILE}" "${CERTFILE}" "${FULLCHAINFILE}" "${CHAINFILE}" /etc/nginx/ssl/${DOMAIN}
-  chown root:www-data /etc/nginx/ssl/${DOMAIN}/*
-  chmod 600 /etc/nginx/ssl/${DOMAIN}/*
-  hash systemctl 2>/dev/null && systemctl restart nginx.service
-
-
 # use letsencrypt test api
 dehydrated_acme_api: https://acme-staging.api.letsencrypt.org/directory
 # use test version with workaround for unreachable private test vms
 dehydrated_repourl: https://github.com/martin-v/dehydrated.git
 dehydrated_commit: selfsigned_for_test_in_vms
-
 
 
 nginx_https_server_name: example.com
