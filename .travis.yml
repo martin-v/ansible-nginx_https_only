@@ -6,6 +6,7 @@ python: "2.7"
 
 before_install:
   - sudo apt-get update -qq
+  - git clone https://github.com/martin-v/ansible-dehydrated.git ../martin-v.dehydrated
 
 install:
   # Install Ansible
