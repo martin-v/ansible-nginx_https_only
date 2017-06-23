@@ -27,6 +27,11 @@
     regexp: '.*ssl_protocols.*'
     state: absent
 
+- name: Remove unsupported config for old nginx version
+  set_fact:
+    nginx_https_ssl_session_tickets_option: ""
+  when: ansible_distribution == 'Ubuntu' and ansible_distribution_release == 'trusty'
+
 - name: Deploy tls config for nginx
   template:
     src: templates/tls.conf.j2

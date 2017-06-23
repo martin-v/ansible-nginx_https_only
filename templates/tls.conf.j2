@@ -9,7 +9,7 @@ ssl_dhparam {{ nginx_https_dhparam_path }};
 # Disable ssl_session_cache because it breaks PFS
 # https://timtaubert.de/blog/2014/11/the-sad-state-of-server-side-tls-session-resumption-implementations/
 ssl_session_cache off;
-ssl_session_tickets off;
+{{ nginx_https_ssl_session_tickets_option }}
 
 ssl_stapling on;
 ssl_stapling_verify on;

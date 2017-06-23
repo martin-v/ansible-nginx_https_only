@@ -24,3 +24,5 @@ nginx_https_dhparam_size: 4096
 
 # Disable nginx server version header ( on | off | build | "string" )
 nginx_server_tokens: "off"
+
+nginx_https_ssl_session_tickets_option: "ssl_session_tickets off;"
