@@ -6,11 +6,13 @@ python: "2.7"
 
 before_install:
   - sudo apt-get update -qq
-  - git clone https://github.com/martin-v/ansible-dehydrated.git ../martin-v.dehydrated
 
 install:
   # Install Ansible
   - pip install ansible ansible-lint
+
+  # clone required role
+  - git clone https://github.com/martin-v/ansible-dehydrated.git ../martin-v.dehydrated
 
 script:
   # Basic role syntax check
@@ -29,8 +31,12 @@ script:
     && (echo 'Idempotence test: pass' && exit 0)
     || (echo 'Idempotence test: fail' && exit 1)
 
-  # Get logfile from script run
+after_failure:
+  # Get logfile from cron run
   - cat /home/dehydrated/weekly-cron.log
+
+  # Get logfile from nginx startup run
+  - sudo cat /var/log/nginx/error.log
 
 notifications:
   webhooks: https://galaxy.ansible.com/api/v1/notifications/
