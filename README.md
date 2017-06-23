@@ -196,8 +196,9 @@ Work as https proxy for an application on `localhost:8080`:
 Open tasks
 ----------
 
-* Implement safe usage of ssl_session_ticket_key
+* Implement safe usage of ssl_session_ticket_key and/or ssl_session_cache
 ** Refresh key every day
+* Consider [mozillas server side TLS recomentations](https://wiki.mozilla.org/Security/Server_Side_TLS) ([config generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/))
 * Add more http security header
 
 
