@@ -196,6 +196,12 @@ Work as https proxy for an application on `localhost:8080`:
 Open tasks
 ----------
 
+master
+[![Build Status travis](https://travis-ci.org/martin-v/ansible-nginx_https_only.svg?branch=master)](https://travis-ci.org/martin-v/ansible-nginx_https_only)
+[![Build Status semaphore](https://semaphoreci.com/api/v1/martin-v/ansible-nginx_https_only/branches/master/badge.svg)](https://semaphoreci.com/martin-v/ansible-nginx_https_only)
+
+
+* Add etckeeper branch
 * Implement safe usage of ssl_session_ticket_key and/or ssl_session_cache
 ** Refresh key every day
 * Consider [mozillas server side TLS recomentations](https://wiki.mozilla.org/Security/Server_Side_TLS) ([config generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/))
