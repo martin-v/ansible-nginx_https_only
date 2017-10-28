@@ -9,6 +9,7 @@
     changed_when: false
 
 
+# run role under test
 - hosts: all
   remote_user: root
   roles:
