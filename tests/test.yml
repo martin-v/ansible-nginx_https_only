@@ -55,6 +55,7 @@
   - name: Restart nginx
     service: name=nginx state=restarted
     changed_when: false
+  - etckeeper: "action=commit msg='ansible: test.sslsite' rev={{ revision }}"
 
   - name: Print webservers ssl certificate
     shell:
