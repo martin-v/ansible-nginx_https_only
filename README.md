@@ -164,6 +164,12 @@ Simple serve static contents from `/var/www/html`:
             }
     }
 
+To support `http2` simply add `http2` to listen config line, e.g.:
+
+            listen 443 ssl http2 default_server;
+            listen [::]:443 ssl http2 default_server;
+
+
 Work as https proxy for an application on `localhost:8080`:
 
     server {
@@ -203,7 +209,7 @@ master
 
 * Add etckeeper branch
 * Implement safe usage of ssl_session_ticket_key and/or ssl_session_cache
-** Refresh key every day
+    * Refresh key every day
 * Consider [mozillas server side TLS recomentations](https://wiki.mozilla.org/Security/Server_Side_TLS) ([config generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/))
 * Add more http security header
 
