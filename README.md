@@ -212,6 +212,7 @@ master
     * Refresh key every day
 * Consider [mozillas server side TLS recomentations](https://wiki.mozilla.org/Security/Server_Side_TLS) ([config generator](https://mozilla.github.io/server-side-tls/ssl-config-generator/))
 * Add more http security header
+* Reenable ansible-lint for etckeeper branch
 
 
 License
